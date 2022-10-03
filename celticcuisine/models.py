@@ -1,7 +1,7 @@
-from celticcuisine import db
+from celticcuisine import db, mongo
 
 
-class Nations(db.model):
+class Nations(db.Model):
     # schema for the Nations model
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(25), unique=True, nullable=False)
@@ -11,6 +11,12 @@ class Nations(db.model):
         return self.category_name
 
 
-#class Recipe  #### needs to be linked to mongodb
+class Users(db.Model):
+    # schema for the Users model
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(260), nullable=False)
 
-#class Users (sql)
+    def __repr__(self):
+        # __repr__ to represent itself in the form of a string
+        return self.user_name
